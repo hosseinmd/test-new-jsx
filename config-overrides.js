@@ -3,15 +3,7 @@ module.exports = {
   webpack: function (config, env) {
     // ...add your webpack config
     config.module.rules[1].use[0].options.baseConfig = require("./.eslintrc.json");
-    config.module.rules[2].oneOf[1].options.plugins = [
-      ...config.module.rules[2].oneOf[1].options.plugins,
-      [
-        require.resolve("@babel/plugin-transform-react-jsx"),
-        {
-          runtime: "automatic",
-        },
-      ],
-    ];
+    config.module.rules[2].oneOf[1].options.presets[0][1].runtime = "automatic";
     config.module.rules = config.module.rules.filter(Boolean);
     return config;
   },
